@@ -1,3 +1,5 @@
+using Sample.API.MapProfile;
+
 Log.Logger = new LoggerConfiguration()
     .WriteTo.Console()
     .CreateLogger();
@@ -20,10 +22,17 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new OpenApiInfo { Title = "Sample API", Version = "v1" }); });
 
 // Add AutoMapper
+var mappingConfig = new MapperConfiguration(mc =>
+{
+    mc.AddProfile(new TodoProfile());
+});
+
+IMapper autoMapper = mappingConfig.CreateMapper();
 
 // Add Services
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddSingleton<IEmailService, EmailService>();
+builder.Services.AddSingleton(autoMapper);
 
 var app = builder.Build();
 
@@ -37,8 +46,6 @@ if (app.Environment.IsDevelopment())
 app.UseSerilogRequestLogging();
 
 app.UseHttpsRedirection();
-
-app.UseAuthorization();
 
 app.MapControllers();
 

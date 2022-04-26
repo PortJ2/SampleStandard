@@ -1,6 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-
-namespace Sample.Infra.DAL
+﻿namespace Sample.Infra.DAL
 {
     public class ApplicationDbContext : DbContext
     {
@@ -8,6 +6,7 @@ namespace Sample.Infra.DAL
         {
         }
 
+        public DbSet<Todo> Todos { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);

@@ -1,5 +1,9 @@
-﻿global using Microsoft.EntityFrameworkCore;
+﻿global using AutoMapper;
+global using Microsoft.AspNetCore.Mvc;
+global using Microsoft.EntityFrameworkCore;
 global using Microsoft.OpenApi.Models;
+global using Sample.Core.Entities;
+global using Sample.Core.Entities.DTO;
 global using Sample.Core.Interfaces;
 global using Sample.Core.Services;
 global using Sample.Infra.DAL;

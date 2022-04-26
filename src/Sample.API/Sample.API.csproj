@@ -15,8 +15,4 @@
     <ProjectReference Include="..\Sample.Infra\Sample.Infra.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
 </Project>
