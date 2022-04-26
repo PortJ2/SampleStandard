@@ -1,4 +1,5 @@
 using Sample.API.MapProfile;
+using Sample.API.Middleware;
 
 Log.Logger = new LoggerConfiguration()
     .WriteTo.Console()
@@ -46,6 +47,9 @@ if (app.Environment.IsDevelopment())
 app.UseSerilogRequestLogging();
 
 app.UseHttpsRedirection();
+
+// Global error handler
+app.UseMiddleware<ErrorHandlerMiddleware>();
 
 app.MapControllers();
 
