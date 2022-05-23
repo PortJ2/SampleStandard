@@ -2,7 +2,7 @@
 {
     public class Todo : BaseEntity
     {
-        public string Title { get; set; }
-        public string Description { get; set; }
+        public string Item { get; set; }
+        public bool Checked { get; set; }
     }
 }
